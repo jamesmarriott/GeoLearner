@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import TableMaster from './components/Tablemaster'
+
+import * as React from "react"
+import {
+  ChakraProvider,
+  Box,
+  Text,
+  Link,
+  VStack,
+  Code,
+  Grid,
+  theme,
+} from "@chakra-ui/react"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
+    return (
+      <ChakraProvider theme={theme}>
+      <Box textAlign="center" fontSize="xl">
+        <Grid minH="100vh" p={3}>
+
+          <VStack spacing={8}>
+            <TableMaster/>
+
+          </VStack>
+        </Grid>
+      </Box>
+    </ChakraProvider>
+      
+    )
+
+}
 export default App;
