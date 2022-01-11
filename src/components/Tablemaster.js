@@ -1,7 +1,7 @@
 import React from 'react'
 import {BeerTable} from './BeerTable'
 import mydata from '.././data/beers1.json'
-
+import {Heading} from '@chakra-ui/react'
 
 export const TableMaster = ()=>{
 
@@ -51,6 +51,7 @@ export const TableMaster = ()=>{
 
     return (
         <>
+            <Heading as='h1' size='3xl'>All The BrewDog Beers</Heading>
             {beers ? <BeerTable beers={beers}/> : <h1>Loading</h1>}
         </>
     )

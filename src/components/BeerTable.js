@@ -12,79 +12,93 @@ import {
 } from '@chakra-ui/react'
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
 import { useTable, useSortBy } from 'react-table'
+import { COLUMNS } from './columns'
 
     export const BeerTable=(props)=>{
 
         const {beers} = props
 
-        console.log(beers)
+        const columns = React.useMemo(() => COLUMNS, [])
+        const data = React.useMemo(() => beers, [])
 
-        // const columns = React.useMemo(
-        //     () => [
-        //       {
-        //         Header: 'Name',
-        //         accessor: 'beer_name',
-        //       },
-        //       {
-        //         Header: 'Tagline',
-        //         accessor: 'tagline',
-        //       },
-        //       {
-        //         Header: 'Multiply by',
-        //         accessor: 'factor',
-        //         isNumeric: true,
-        //       },
-        //     ],
-        //     [],
-        //   )
+        // console.log(columns)
+        //  console.log(data)
+ 
 
-        // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-        // useTable({ columns, data }, useSortBy)
+        const { getTableProps,
+                getTableBodyProps,
+                headerGroups,
+                rows,
+                prepareRow
+        } = useTable({
+            columns,
+            data
+        },
+            useSortBy)
 
         return(
         
-            <Table size="sm" variant='striped' colorScheme='teal'>
+            <Table {...getTableProps()} size="md" variant='striped' colorScheme='teal'>
                     <TableCaption>Punk Beers</TableCaption>
                 <Thead>
-                    <Tr>
-                        <Th>#</Th>
-                        <Th>Name</Th>
-                        <Th>Tagline</Th>
-                        <Th>First Brewed</Th>
-                        <Th>Description</Th>
-                        <Th>Image</Th>
-                        <Th>abv</Th>
-                    </Tr>
+                    {
+                        headerGroups.map((headerGroup) => {
+                            console.log(headerGroup)
+                            return (
+                                
+                            <Tr {...headerGroup.getHeaderGroupProps()}>
+                                {headerGroup.headers.map((column) => (
+                                        <Th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                            {column.render('Header')}
+                                            <chakra.span pl='4'>
+                                                {column.isSorted ? (
+                                                    column.isSortedDesc ? (
+                                                    <TriangleDownIcon aria-label='sorted descending' />
+                                                    ) : (
+                                                    <TriangleUpIcon aria-label='sorted ascending' />
+                                                    )
+                                                ) : null}
+                                                </chakra.span>
+                                        </Th>
+                                    ))
+                                }
+                            </Tr>
+                            )}
+                        )}
                 </Thead>
-                <Tbody>
-                    {beers.map((beer, key)=>(
-                        <Tr key={key}>
-                            <Td>{beer.id}</Td>
-                            <Td>{beer.name}</Td>
-                            <Td>{beer.tagline}</Td>
-                            <Td>{beer.date}</Td>
-                            <Td>{beer.description}</Td>
-                            <Td>
-                                <Image 
-                                    src={beer.image_url}
-                                    alt={beer.name}
-                                    objectFit="contain"
-                                    boxSize='100px'
-                                    padding='none'
-                                    boxShadow='2xl'
-                                    p='1'
-                                    rounded='5'
-                                    bg='gray.200'
-                                />
-                            </Td>
-                            <Td isNumeric>{beer.abv}</Td>
-                        </Tr>              
-                    ))
+                <Tbody {...getTableBodyProps()}>
+                    {rows.map((row) => {
+                            prepareRow(row)
+                            return (
+                                <Tr {...row.getRowProps()}>
+                                    {row.cells.map((cell) =>{
+                                        console.log(cell)
+                                        return (
+                                
+                                        
+                                       <Td {...cell.getCellProps()}>
+                                           {cell.column.Header === 'image_url' ?
+                                               <Image 
+                                               src={cell.value}
+                                               alt={cell.name}
+                                               objectFit="contain"
+                                               boxSize='100px'
+                                               padding='none'
+                                               boxShadow='2xl'
+                                               p='1'
+                                               rounded='5'
+                                               bg='gray.200'
+                                               transition='all .2s cubic-bezier(.17,.67,.83,.67)'
+                                               _hover={{ transform: 'scale(2)' }}
+                                           />
+                                           : 
+                                           cell.render('Cell')}
+                                           </Td>
+                                    )})}
+                                </Tr>
+                            )
+                        })
                     }
                 </Tbody>
-            </Table>        
-
-
-    )
-
-    }
+            </Table>
+        )}
