@@ -13,7 +13,7 @@ export const TableMaster = ()=>{
 
         const result = []
             
-        const filteredData = mydata.forEach(value => {
+        mydata.forEach(value => {
 
             result.push({
                 id: value.id,

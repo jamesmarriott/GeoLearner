@@ -2,12 +2,26 @@
 
 ## Requirements
 
-- Present Brewdog's Beers in a filterable/ searchable table.
+Present Brewdog's Beers in a filterable/ searchable table.
 
-ToDo
+## Tech
 
-- Make table sortable
+[React Table](https://github.com/tannerlinsley/react-table)
+[Chakra UI](https://chakra-ui.com/)
+
+## Api
+
+[Punk API](https://punkapi.com/)
+whilst I'm developing this, I'm just pulling that data from a json to save API calls.
+
+## Done
+
+- Present the beers using React table and Chakra UI.
+- Table is soratable by ascending/ descending.
+
+## To Do
+
 - Add filter buttons
+- Add pagination
 - Add a search bar with instant filtering
-- Add some transitions / delays
-- Add some styling
+- Add some subtle transitions / delays

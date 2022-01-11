@@ -19,11 +19,9 @@ import { COLUMNS } from './columns'
         const {beers} = props
 
         const columns = React.useMemo(() => COLUMNS, [])
-        const data = React.useMemo(() => beers, [])
+        const data = React.useMemo(() => beers, [beers])
 
-        // console.log(columns)
-        //  console.log(data)
- 
+        // useMemo to reduce rerenders
 
         const { getTableProps,
                 getTableBodyProps,
