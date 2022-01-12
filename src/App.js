@@ -1,4 +1,6 @@
-import TableMaster from './components/Tablemaster'
+import BeerTableMaster from './beer-components/BeerTablemaster'
+import FlagTableMaster from './fl-components/FlagTablemaster'
+import MenuComp from './mainmenu/menuholder'
 
 import * as React from "react"
 import {
@@ -16,8 +18,11 @@ function App() {
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
 
+
+        <MenuComp/>
+
           <VStack spacing={8}>
-            <TableMaster/>
+            <FlagTableMaster/>
 
           </VStack>
         </Grid>
