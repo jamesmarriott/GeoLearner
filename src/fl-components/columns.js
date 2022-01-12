@@ -20,11 +20,11 @@ export const COLUMNS = [
         accessor: 'population'
     },
     {
-        Header: 'area',
+        Header: 'area (km2)',
         accessor: 'area'
     },
     {   
-        Header: 'pop. density (people / SquareKM )',
+        Header: 'Density (people / km2 )',
         accessor: 'density'
     }
 ]

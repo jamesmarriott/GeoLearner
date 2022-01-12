@@ -1,5 +1,4 @@
 import FlagTableMaster from './fl-components/FlagTablemaster'
-import MenuComp from './mainmenu/menuholder'
 
 import * as React from "react"
 import {
