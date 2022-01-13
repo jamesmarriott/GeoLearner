@@ -84,7 +84,7 @@ function MapMaster() {
           {...play, played: true, correct: false} : play
       }))
     }
-    currentQuestion + 1 === questionNumberTotal ? setGameOver(true) : setCurrentQuestion(currentQuestion + 1)
+    currentQuestion === questionNumberTotal ? setGameOver(true) : setCurrentQuestion(currentQuestion + 1)
   }
   
   return (
@@ -122,12 +122,14 @@ function MapMaster() {
 
 export default MapMaster
 
+
 // To do: Only get countries over a certain size
-// fix the colors
+// fix gameover count problem
 // allow zooming
 // zime out before end
-// show the correct country only
+// if user in wrong show the correct country not the one the user selected
 // restart game
 // don't allow duplicates
 // deploy!!!
 // if the user has clicked correctly on a country it should be green/ otherwise red
+// are the countries really random? Doesn't seem like it

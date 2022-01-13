@@ -2,7 +2,7 @@ import React from "react";
 import { Text, Box, Center, Grid, GridItem } from '@chakra-ui/react'
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons'
 
-function GameOver({currentQuestion, score, player}) {
+function GameOver({questionNumberTotal, score, player}) {
 
 
 
@@ -14,7 +14,7 @@ function GameOver({currentQuestion, score, player}) {
               <Text fontSize='3xl'>Game Over!</Text>
             </GridItem>
             <GridItem colSpan={4}>
-              <Text fontSize='2xl'>You got {score} right and {currentQuestion-score} wrong</Text>
+              <Text fontSize='2xl'>You got {score} right and {questionNumberTotal-score} wrong</Text>
             </GridItem>
               {player.map(item=>
                     <>
