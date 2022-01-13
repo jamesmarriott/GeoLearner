@@ -1,6 +1,6 @@
 import React from 'react'
 import {CountryTable} from './CountryTable'
-import mydata from '../flagdata/countries.json'
+import mydata from '../../flagdata/countries.json'
 import {Heading} from '@chakra-ui/react'
 
 export const FlagTableMaster = ()=>{
@@ -29,25 +29,6 @@ export const FlagTableMaster = ()=>{
         setCountries(result)
     },[])
 
-
-    // let punkURL = 'https://api.punkapi.com/v2/beers'
-
-    // React.useEffect(()=>{
-
-    //     const beerGetter = async()=>{
-    //         const res = await getFromApi()
-    //         setBeers(res)
-    //     }
-    //     beerGetter()
-    // },[])
-
-
-
-    // const getFromApi = async ()=>{
-    //     const response = await fetch(punkURL)
-    //     const data = response.json()
-    //     return data
-    // }
 
     return (
         <>
