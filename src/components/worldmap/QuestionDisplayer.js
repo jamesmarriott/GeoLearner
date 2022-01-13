@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Text, Progress, Box, Center, Grid, GridItem } from '@chakra-ui/react'
 
 function QuestionScoreDisplay({currentQuestion, questionNumberTotal, score, player, message}) {
