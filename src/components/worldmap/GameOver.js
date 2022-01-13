@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Text, Progress, Box, Center, Grid, GridItem } from '@chakra-ui/react'
+import React from "react";
+import { Text, Box, Center, Grid, GridItem } from '@chakra-ui/react'
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons'
 
-function GameOver({currentQuestion, questionNumberTotal, score, player, message}) {
+function GameOver({currentQuestion, score, player}) {
 
-  const bgstyle = ()=> {
-    if (message.includes("Correct")) return "green"
-    else if (message.includes("Wrong")) return "red"
-    else return
-  }
+
 
   return (
     <Box pos="absolute" w='100%' textAlign="center">

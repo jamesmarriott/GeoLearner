@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState, useCallback } from "react";
-import { select, geoPath, easeCubicOut, geoMercator, geoEquirectangular, min, max, scaleLinear } from "d3";
+import React, { useRef, useEffect } from "react";
+import { select, geoPath, geoEquirectangular } from "d3";
 import useResizeObserver from "./useResizeObserver";
 
 function GeoChart({ data, property, countrySelectorCallback, selectedCountry}) {
@@ -12,13 +12,13 @@ function GeoChart({ data, property, countrySelectorCallback, selectedCountry}) {
   useEffect(() => {
     const svg = select(svgRef.current);
 
-    const minProp = min(data.features, feature => feature.properties[property]);
-    const maxProp = max(data.features, feature => feature.properties[property]);
+    // const minProp = min(data.features, feature => feature.properties[property]);
+    // const maxProp = max(data.features, feature => feature.properties[property]);
     
-    function randomColor1() {
-    const num = Math.floor(Math.random()*16777215).toString(16)
-    return `#${num}`
-      }
+    // function randomColor1() {
+    // const num = Math.floor(Math.random()*16777215).toString(16)
+    // return `#${num}`
+    //   }
 
     // console.log(randomColor2)
     
@@ -41,12 +41,7 @@ function GeoChart({ data, property, countrySelectorCallback, selectedCountry}) {
     // takes geojson data and projects the geo-cordinates on a 2d plane
     const pathGenerator = geoPath().projection(projection);
 
-    const zoomSettings = {
-      duration: 1000,
-      ease: easeCubicOut,
-      zoomLevel : 5
-    }
-
+ 
     // render each country
     svg
       .selectAll(".country")
@@ -57,14 +52,7 @@ function GeoChart({ data, property, countrySelectorCallback, selectedCountry}) {
         })
       .attr("class", "country")
       .transition()
-      .attr("d", feature => pathGenerator(feature))
-            .text(
-        feature =>
-          feature &&
-          feature.properties.name
-      );
-    
-  
+      .attr("d", feature => pathGenerator(feature));
 
       svg
       .selectAll(".label")
@@ -79,7 +67,7 @@ function GeoChart({ data, property, countrySelectorCallback, selectedCountry}) {
       .style("font", "30px arial")
       .attr("x", width-(width/2))
       .attr("y", height-(height/2));
-  }, [data, dimensions, property, selectedCountry]);
+  }, [data, dimensions, property, selectedCountry, countrySelectorCallback]);
 
 
   return (

@@ -1,13 +1,9 @@
-import FlagTableMaster from './components/fl-components/FlagTablemaster'
+// import FlagTableMaster from './components/fl-components/FlagTablemaster'
 import MapMaster from './components/worldmap/MapMaster'
 
 import * as React from "react"
 import {
   ChakraProvider,
-  Box,
-  Container,
-  VStack,
-  Grid,
   theme,
 } from "@chakra-ui/react"
 

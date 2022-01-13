@@ -11,7 +11,7 @@ import {
     chakra
 } from '@chakra-ui/react'
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
-import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
 import { useMediaQuery } from '@chakra-ui/react'
 import { COLUMNS } from './columns'
 
