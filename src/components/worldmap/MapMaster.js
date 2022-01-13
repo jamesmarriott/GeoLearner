@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import GeoChart from "./GeoChart";
 import QuestionScoreDisplay from "./QuestionDisplayer";
 import GameOver from './GameOver'
 import data from "./GeoChart.world.geo.json";
-import { Text, Progress, Box, Center, Grid, GridItem } from '@chakra-ui/react'
+import { Box, } from '@chakra-ui/react'
 
 import "./App.css";
 
@@ -12,7 +12,7 @@ function MapMaster() {
 //total number of questions
   const questionNumberTotal = 20
 // grabs x number of countries at random from total a data set
-  const [playerQuestions, setPlayerQuestions] = useState(resetPlayer())
+  
 // the current question number
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [score, setScore] = useState(0)
@@ -22,7 +22,7 @@ function MapMaster() {
 // its just taking the the unique iso country number and passing that in so it can 
 // be used to generate a unique color for each country. but it can also be used for other purposes.
 // if we pass something else as props - like population size.
-  const [property, setProperty] = useState("iso_n3");
+  const property = "iso_n3"
   const [player, setPlayer] = useState(resetPlayer())
   const [selectedCountry, setSelectedCountry] = useState()
   const [message, setMessage] = useState(`Find ${player[currentQuestion].country}`)
@@ -52,6 +52,7 @@ function MapMaster() {
       setSelectedCountry(null)
     }, 1000);
     return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCountry]);
 
   useEffect(() => {
@@ -59,6 +60,7 @@ function MapMaster() {
       setMessage(`Find ${player[currentQuestion].country}`)
     }, 1000);
     return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentQuestion])
 
   const countryCallBack = useCallback((feature) => {
