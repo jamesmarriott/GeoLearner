@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { select, geoPath, geoEquirectangular } from "d3";
 import useResizeObserver from "./useResizeObserver";
+import './GeoChart.module.css'
 
 function GeoChart({ data, property, countrySelectorCallback, selectedCountry}) {
   const svgRef = useRef();
@@ -11,22 +12,6 @@ function GeoChart({ data, property, countrySelectorCallback, selectedCountry}) {
 
   useEffect(() => {
     const svg = select(svgRef.current);
-
-    // const minProp = min(data.features, feature => feature.properties[property]);
-    // const maxProp = max(data.features, feature => feature.properties[property]);
-    
-    // function randomColor1() {
-    // const num = Math.floor(Math.random()*16777215).toString(16)
-    // return `#${num}`
-    //   }
-
-    // console.log(randomColor2)
-    
-    // const colorScale = scaleLinear()
-    //   .domain([minProp, maxProp])
-    //   .range([`#${randomColor1}`, `#${randomColor2}`]);
-
-    
     // use resized dimensions
     // but fall back to getBoundingClientRect, if no dimensions yet.
     const { width, height } =
@@ -41,7 +26,6 @@ function GeoChart({ data, property, countrySelectorCallback, selectedCountry}) {
     // takes geojson data and projects the geo-cordinates on a 2d plane
     const pathGenerator = geoPath().projection(projection);
 
- 
     // render each country
     svg
       .selectAll(".country")
